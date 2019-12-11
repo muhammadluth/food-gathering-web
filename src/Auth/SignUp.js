@@ -49,7 +49,7 @@ class SignUp extends React.Component {
       })
       .catch(err => {
         console.log(err);
-        window.location.href = "/SignUp/";
+        window.location.href = "/SignUp";
         alert("Please, fill in your personal");
       });
   }

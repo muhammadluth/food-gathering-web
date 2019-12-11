@@ -84,13 +84,13 @@ class Carts extends Component {
         },
         {
           headers: {
-            Authorization: localStorage.getItem("token")
+            authorization: `${localStorage.getItem("token")}`
           }
         }
       ).then(res => {
         console.log(res);
         console.log(item);
-        window.location.href = "/dashboard/";
+        window.location.href = "/dashboard";
       });
     });
   }

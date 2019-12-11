@@ -19,11 +19,13 @@ class ListProduct extends Component {
       qty: ""
     };
   }
+
   render() {
     console.log(this.props);
     const ListProduct = this.props.product.map(item => (
       <Col span={8} style={{ padding: "8px" }}>
         <Card
+          loading={this.props.loading}
           style={{ width: "100%", height: "100%" }}
           cover={
             <img

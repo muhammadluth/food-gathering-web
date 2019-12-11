@@ -15,10 +15,10 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Route exact path="/" component={SignIn} />
-          <Route exact path="/SignUp/" component={SignUp} />
-          <Route exact path="/dashboard/" component={Dashboard} />
-          <Route excat path="/manage/" component={Manage} />
-          <Route excat path="/history/" component={History} />
+          <Route exact path="/SignUp" component={SignUp} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route excat path="/manage" component={Manage} />
+          <Route excat path="/history" component={History} />
         </Router>
       </Provider>
     );

@@ -67,7 +67,7 @@ export default class EditProduct extends React.Component {
     })
       .then(res => {
         console.log(res);
-        window.location.href = "/manage/";
+        window.location.href = "/manage";
       })
       .catch(err => {
         console.log(err.response);

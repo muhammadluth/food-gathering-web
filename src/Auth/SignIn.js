@@ -38,8 +38,8 @@ class SignIn extends React.Component {
         console.log(res.data);
         if (res.data.success === 200) {
           localStorage.setItem("user", `${res.data.username}`);
-          localStorage.setItem("token", `${res.data.token}`);
-          window.location.href = "/dashboard/";
+          localStorage.setItem("token", `Bearer: ${res.data.token}`);
+          window.location.href = "/dashboard";
           alert("Masuk");
         } else {
           window.location.href = "/";

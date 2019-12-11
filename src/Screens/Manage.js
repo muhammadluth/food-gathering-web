@@ -34,7 +34,8 @@ class Manage extends React.Component {
       qty: "",
       allPage: [],
       Edit: [],
-      visible: false
+      visible: false,
+      loading: true
     };
   }
   componentDidMount() {
@@ -48,7 +49,7 @@ class Manage extends React.Component {
         sort: this.state.sort
       })
     );
-    this.setState({ data: this.props.data.menuList });
+    this.setState({ data: this.props.data.menuList, loading: false });
   }
   showModal = () => {
     this.setState({
@@ -102,8 +103,6 @@ class Manage extends React.Component {
     pd.append("category_id", category);
     pd.append("price", price);
     pd.append("qty", qty);
-
-    console.log(category);
     Http.post(`/api/v1/product/`, pd, {
       headers: {
         authorization: `${localStorage.getItem("token")}`
@@ -111,7 +110,7 @@ class Manage extends React.Component {
     })
       .then(res => {
         console.log(res);
-        window.location.href = "/manage/";
+        window.location.href = "/manage";
       })
       .catch(err => {
         console.log(err.response);
@@ -121,18 +120,15 @@ class Manage extends React.Component {
     let id = dataIndex;
     await Http.delete(`/api/v1/product/${id}`, {
       headers: {
-        Authorization: `${localStorage.getItem("token")}`
+        authorization: `${localStorage.getItem("token")}`
       }
-    })
-      .then(res => {
-        window.location.href = "/manage/";
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    }).then(res => {
+      window.location.href = "/manage";
+    });
   }
 
   render() {
+    console.log(localStorage.getItem("token"));
     const { visible } = this.state;
     return (
       <Layout className="layout">
@@ -207,6 +203,7 @@ class Manage extends React.Component {
               <TableData
                 DataTable={this.state.data}
                 handleDelete={this.handleDelete}
+                loading={this.state.loading}
               />
             </div>
           </div>
